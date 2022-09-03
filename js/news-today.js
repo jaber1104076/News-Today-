@@ -26,7 +26,7 @@ const loadNewsDeatils = category_id => {
 }
 
 const displayNews = newsinfo => {
-    console.log(newsinfo)
+    // console.log(newsinfo)
     const textField = document.getElementById('text-field')
     if (newsinfo.length != 0) {
         textField.innerHTML = `
@@ -40,8 +40,8 @@ const displayNews = newsinfo => {
 
     newsContainer.innerHTML = "";
     newsinfo.forEach(news => {
-        console.log(news)
-        const { title, details, total_view, thumbnail_url, image_url, author, category_id } = news;
+        // console.log(news)
+        const { title, details, total_view, image_url, author, category_id, _id } = news;
         const { name, published_date, img } = author;
         const newsDiv = document.createElement('div')
         newsDiv.innerHTML = `
@@ -58,7 +58,7 @@ const displayNews = newsinfo => {
                 <p class="p-2">${name ? name : 'no name found'}</p> 
                 </div>
                 <div >${total_view}</div>
-                <div class="me-4"><button class="btn btn-outline-success"  onclick="loadModal('${category_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal">details</button></div>
+                <div class="me-4"><button class="btn btn-outline-success"  onclick="loadModal('${_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal">details</button></div>
             </div>
         </div>
     </div>
@@ -68,7 +68,26 @@ const displayNews = newsinfo => {
     })
     document.getElementById('spinner').style.display = 'none'
 }
-const loadModal = (id) => {
-    console.log(id)
+const loadModal = (authorId) => {
+    // console.log(authorId)
+    const url = ` https://openapi.programming-hero.com/api/news/${authorId}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayModal(data.data))
+}
+const displayModal = authors => {
+    const modalBody = document.getElementById('modal-body')
+    authors.forEach(authorData => {
+        const { details, author } = authorData;
+        const { name, img } = author;
+        // modalBody.classList.add('card')
+        modalBody.innerHTML = `
+            <img src="${img}" class="card-img-top modal-design" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${name ? name : 'no name found'}</h5>
+                <p class="card-text"></p>
+            </div>
+        `;
+    })
 }
 loadCatagor();

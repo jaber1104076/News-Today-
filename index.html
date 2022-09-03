@@ -13,6 +13,11 @@
             height: 50px;
             border-radius: 25px;
         }
+
+        .modal-design {
+            width: 100%;
+            height: 200px;
+        }
     </style>
 </head>
 
@@ -79,14 +84,17 @@
 
                 </div>
             </div>
+            <!-- spinner started -->
             <div class="d-flex justify-content-center ">
                 <div id="spinner" class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </div>
+            <!-- spinner started -->
         </section>
         <!-- news section end -->
-        <!-- modal section started  -->
+        <!----------
+                    modal section started  --------->
         <section>
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -94,11 +102,10 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            ...
+                        <div id="modal-body" class="modal-body">
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
