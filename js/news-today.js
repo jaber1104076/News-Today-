@@ -29,7 +29,7 @@ const loadNewsDeatils = category_id => {
 }
 
 const displayNews = newsinfo => {
-    // console.log(newsinfo)
+    console.log(newsinfo)
     document.getElementById('spinner').style.display = 'none'
     const textField = document.getElementById('text-field')
     if (newsinfo.length != 0) {
@@ -46,16 +46,19 @@ const displayNews = newsinfo => {
 
     newsContainer.innerHTML = "";
     newsinfo.forEach(news => {
-        // console.log(news)
+        //console.log(news)
         const { title, details, total_view, image_url, author, category_id, _id } = news;
         const { name, published_date, img } = author;
+        console.log(total_view)
+        // Array.sort(total_view)
         const newsDiv = document.createElement('div')
         newsDiv.innerHTML = `
-        <div class="d-flex flex-sm-column flex-md-row my-4 rounded rounded-2 shadow-lg">
-        <div class="col-md-4 col-sm-12">
+        <div class="col-md-12 col-sm-12 my-4 rounded rounded-2 shadow-lg">
+        <div class="d-lg-flex d-md-flex">
+        <div>
         <img src="${image_url}" class="img-fluid rounded-start h-100 m-sm-100" alt="...">
         </div>
-        <div class="col-md-8 col-sm-12 ms-2">
+        <div class="col-md-8 col-sm-12 ms-2 flex-md-row ">
         <div class="card-body">
             <h5 class="card-title mt-3 p-3"> ${title}</h5>
             <p class="card-text p-3">${details.slice(0, 300) === true ? details.slice(0, 300) : details.slice(0, 301) + " ..."}</p>
@@ -67,6 +70,7 @@ const displayNews = newsinfo => {
                 <div class="me-4"><button class="btn btn-outline-primary"  onclick="loadModal('${_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal">details</button></div>
             </div>
         </div>
+    </div>
     </div>
     </div>
         `;
