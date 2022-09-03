@@ -41,7 +41,7 @@ const displayNews = newsinfo => {
     newsContainer.innerHTML = "";
     newsinfo.forEach(news => {
         console.log(news)
-        const { title, details, total_view, thumbnail_url, image_url, author } = news;
+        const { title, details, total_view, thumbnail_url, image_url, author, category_id } = news;
         const { name, published_date, img } = author;
         const newsDiv = document.createElement('div')
         //newsDiv.classList.add('imgs')
@@ -54,12 +54,12 @@ const displayNews = newsinfo => {
         <div class="card-body">
             <h5 class="card-title mt-3"> ${title}</h5>
             <p class="card-text">${details.slice(0, 300) === true ? details.slice(0, 300) : details.slice(0, 301) + " ..."}</p>
-            <div class="d-flex justify-content-around  mt-5">
-                <div class="d-flex "><img src="${thumbnail_url}" class="img-fluid w-25 h-50 rounded-circle " alt="...">
-                <p>${name}</p> 
+            <div class="d-flex justify-content-around align-items-center mt-5 mb-2">
+                <div class="d-flex "><img src="${thumbnail_url}" class="img-fluid w-25 h-25 rounded-circle " alt="...">
+                <p class="mt-4 p-2">${name}</p> 
                 </div>
-                <div>${total_view}</div>
-                <div><button class="btn btn-outline-success">details</button></div>
+                <div >${total_view}</div>
+                <div class="me-4"><button class="btn btn-outline-success"  onclick="loadModal('${category_id}')">details</button></div>
             </div>
         </div>
     </div>
@@ -69,5 +69,7 @@ const displayNews = newsinfo => {
     })
     document.getElementById('spinner').style.display = 'none'
 }
-
-loadCatagor()
+const loadModal = (id) => {
+    console.log(id)
+}
+loadCatagor();
