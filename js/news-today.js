@@ -46,17 +46,17 @@ const displayNews = newsinfo => {
         const newsDiv = document.createElement('div')
         //newsDiv.classList.add('imgs')
         newsDiv.innerHTML = `
-        <div class="d-flex my-4 rounded rounded-2 shadow-lg">
-        <div class="col-md-4 ">
-        <img src="${image_url}" class="img-fluid rounded-start h-100" alt="...">
+        <div class="d-flex flex-sm-column flex-md-row my-4 rounded rounded-2 shadow-lg">
+        <div class="col-md-4 col-sm-12">
+        <img src="${image_url}" class="img-fluid rounded-start h-100 m-sm-100" alt="...">
         </div>
-        <div class="col-md-8 ms-2">
+        <div class="col-md-8 col-sm-12 ms-2">
         <div class="card-body">
-            <h5 class="card-title mt-3"> ${title}</h5>
-            <p class="card-text">${details.slice(0, 300) === true ? details.slice(0, 300) : details.slice(0, 301) + " ..."}</p>
+            <h5 class="card-title mt-3 p-3"> ${title}</h5>
+            <p class="card-text p-3">${details.slice(0, 300) === true ? details.slice(0, 300) : details.slice(0, 301) + " ..."}</p>
             <div class="d-flex justify-content-around align-items-center mt-5 mb-2">
-                <div class="d-flex "><img src="${thumbnail_url}" class="img-fluid w-25 h-25 rounded-circle " alt="...">
-                <p class="mt-4 p-2">${name}</p> 
+                <div class="d-flex "><img src="${img}" class="design" alt="...">
+                <p class="p-2">${name}</p> 
                 </div>
                 <div >${total_view}</div>
                 <div class="me-4"><button class="btn btn-outline-success"  onclick="loadModal('${category_id}')">details</button></div>
