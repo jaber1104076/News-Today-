@@ -44,7 +44,6 @@ const displayNews = newsinfo => {
         const { title, details, total_view, thumbnail_url, image_url, author, category_id } = news;
         const { name, published_date, img } = author;
         const newsDiv = document.createElement('div')
-        //newsDiv.classList.add('imgs')
         newsDiv.innerHTML = `
         <div class="d-flex flex-sm-column flex-md-row my-4 rounded rounded-2 shadow-lg">
         <div class="col-md-4 col-sm-12">
@@ -56,10 +55,10 @@ const displayNews = newsinfo => {
             <p class="card-text p-3">${details.slice(0, 300) === true ? details.slice(0, 300) : details.slice(0, 301) + " ..."}</p>
             <div class="d-flex justify-content-around align-items-center mt-5 mb-2">
                 <div class="d-flex "><img src="${img}" class="design" alt="...">
-                <p class="p-2">${name}</p> 
+                <p class="p-2">${name ? name : 'no name found'}</p> 
                 </div>
                 <div >${total_view}</div>
-                <div class="me-4"><button class="btn btn-outline-success"  onclick="loadModal('${category_id}')">details</button></div>
+                <div class="me-4"><button class="btn btn-outline-success"  onclick="loadModal('${category_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal">details</button></div>
             </div>
         </div>
     </div>
