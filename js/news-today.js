@@ -12,7 +12,7 @@ const displayCtagory = items => {
         //  console.log(item.category_name)
         const catagoryDiv = document.createElement('div')
         catagoryDiv.innerHTML = `
-        <button href="#"  class="btn border border-0" onclick="loadNewsDeatils('${item.category_id}')">${item.category_name}</button>
+        <button href="#"  class="btn border border-0 fs-4" onclick="loadNewsDeatils('${item.category_id}')">${item.category_name}</button>
         `;
         catagoryContainer.appendChild(catagoryDiv)
     });
@@ -85,7 +85,7 @@ const displayModal = authors => {
             <img src="${img}" class="card-img-top modal-design" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${name ? name : 'no name found'}</h5>
-                <p class="card-text"></p>
+                <p class="card-text">${details.slice(0, 100)}</p>
             </div>
         `;
     })
