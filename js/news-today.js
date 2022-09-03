@@ -12,29 +12,35 @@ const displayCtagory = items => {
         //  console.log(item.category_name)
         const catagoryDiv = document.createElement('div')
         catagoryDiv.innerHTML = `
-        <button href="#"  class="btn border border-0 fs-4" onclick="loadNewsDeatils('${item.category_id}')">${item.category_name}</button>
+        <button href="#"  class="btn btn-outline-success border border-0 fs-4" onclick="loadNewsDeatils('${item.category_id}')">${item.category_name}</button>
         `;
         catagoryContainer.appendChild(catagoryDiv)
+
     });
+
 }
 const loadNewsDeatils = category_id => {
+
+    document.getElementById('spinner').style.display = 'block'
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`
     fetch(url)
         .then(res => res.json())
         .then(data => displayNews(data.data))
-    document.getElementById('spinner').style.display = 'block'
 }
 
 const displayNews = newsinfo => {
     // console.log(newsinfo)
+    document.getElementById('spinner').style.display = 'none'
     const textField = document.getElementById('text-field')
     if (newsinfo.length != 0) {
         textField.innerHTML = `
         <p>${newsinfo.length} Number of news</p>
         `;
+
     }
     else {
         textField.innerText = 'There is No news'
+
     }
     const newsContainer = document.getElementById('news-container')
 
@@ -57,16 +63,17 @@ const displayNews = newsinfo => {
                 <div class="d-flex "><img src="${img}" class="design" alt="...">
                 <p class="p-2">${name ? name : 'no name found'}</p> 
                 </div>
-                <div >${total_view}</div>
-                <div class="me-4"><button class="btn btn-outline-success"  onclick="loadModal('${_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal">details</button></div>
+                <div ><i class="fa-solid fa-eye"></i> ${total_view}</div>
+                <div class="me-4"><button class="btn btn-outline-primary"  onclick="loadModal('${_id}')" data-bs-toggle="modal" data-bs-target="#exampleModal">details</button></div>
             </div>
         </div>
     </div>
     </div>
         `;
         newsContainer.appendChild(newsDiv);
+
     })
-    document.getElementById('spinner').style.display = 'none'
+
 }
 const loadModal = (authorId) => {
     // console.log(authorId)
@@ -90,4 +97,5 @@ const displayModal = authors => {
         `;
     })
 }
+
 loadCatagor();
