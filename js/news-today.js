@@ -12,7 +12,7 @@ const displayCtagory = items => {
         //  console.log(item.category_name)
         const catagoryDiv = document.createElement('div')
         catagoryDiv.innerHTML = `
-        <button href="#"  class="btn btn-outline-success border border-0 fs-4" onclick="loadNewsDeatils('${item.category_id}')">${item.category_name}</button>
+        <button href="#"  class="btn btn-outline-success border border-0 fs-4 ms-3" onclick="loadNewsDeatils('${item.category_id}')">${item.category_name}</button>
         `;
         catagoryContainer.appendChild(catagoryDiv)
 
@@ -33,13 +33,12 @@ const displayNews = newsinfo => {
     document.getElementById('spinner').style.display = 'none'
     const textField = document.getElementById('text-field')
     if (newsinfo.length != 0) {
-        textField.innerHTML = `
-        <p>${newsinfo.length} Number of news</p>
+        textField.value = `${newsinfo.length} Number of news 
         `;
 
     }
     else {
-        textField.innerText = 'There is No news'
+        textField.value = 'There is No news'
 
     }
     const newsContainer = document.getElementById('news-container')
